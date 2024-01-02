@@ -117,7 +117,7 @@
       this.handlers[eventName] = [];
     }
     this.handlers[eventName].push(handler);
-    this.element.addEventListener(eventName, handler, false);
+    this.element.addEventListener(eventName, handler, { passive: true });
   };
 
   EventElement.prototype.unbind = function unbind (eventName, target) {
