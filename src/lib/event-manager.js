@@ -9,7 +9,11 @@ class EventElement {
       this.handlers[eventName] = [];
     }
     this.handlers[eventName].push(handler);
-    this.element.addEventListener(eventName, handler, false);
+
+    const isWheelEvent = eventName === 'wheel' || eventName === 'mousewheel';
+    const options = isWheelEvent ? { passive: true } : false;
+
+    this.element.addEventListener(eventName, handler, options);
   }
 
   unbind(eventName, target) {
